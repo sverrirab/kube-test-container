@@ -1,0 +1,107 @@
+<html>
+<head>
+	<title>{{.Title}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		function status(txt) {
+			document.getElementById('status').innerHTML = txt;
+		}
+		function complete(e) {
+		    console.log(e);
+		    var src = e.srcElement;
+		    var el = e.srcElement.dataElement;
+		    var setStyle = e.srcElement.dataSetStyle;
+		    var classes = [];
+		    if (src.status== 200) {
+		        if (e.srcElement.responseText.match("Abnormal")) {
+		            classes.push("alert", "alert-warning");
+                }
+                el.innerText = e.srcElement.responseText;
+            }
+            else {
+                classes.push("alert", "alert-danger");
+                el.innerText = src.statusText;
+            }
+            classes.push("col-sm-3", "result");
+		    if (setStyle) {
+                el.classList = classes.join(" ");
+            }
+        }
+		function fetch(url, el, setStyle) {
+			var request = new XMLHttpRequest();
+			request.open('GET', url, true);
+			request.addEventListener("load", complete);
+			request.addEventListener("error", complete);
+            request.dataElement = el;
+            request.dataSetStyle = setStyle;
+			request.send(null);
+		}
+		function useRam() {
+            fetch("/ram", document.getElementById('status'), false);
+		}
+		function useCpu() {
+            fetch("/cpu", document.getElementById('status'), false);
+		}
+		function reloadAll() {
+			var results = document.getElementsByClassName("result");
+			for (var i = 0; i < results.length; i++) {
+			    fetch("/status", results[i], true);
+			}
+			status("Multiple requests...");
+		}
+	</script>
+</head>
+<body>
+    <h2>{{.Name}} - {{.Status}} (request #{{.Cnt}})</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+        </div>
+        <p>
+        <div class="row">
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+        </div>
+        <p>
+        <div class="row">
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+        </div>
+        <p>
+        <div class="row">
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+        </div>
+        <p>
+        <div class="row">
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+            <span class="col-sm-3 result">...</span>
+        </div>
+    </div>
+    <h2>Actions</h2>
+    <a href="#" onclick="useRam()">Let one use too much RAM</a><p>
+    <a href="#" onclick="useCpu()">Let one use too much CPU</a><p>
+    <a href="#" onclick="reloadAll()">Fetch multiple status pages</a><p>
+    <div class="alert alert-success">
+        <span id="status"></span>
+    </div>
+    <h2>Environment Variables</h2>
+    <ul class="list-group">
+        {{range .Env}}
+            <li class="list-group-item">{{.}}</li>
+        {{end}}
+    </ul>
+</body>
+</html>
