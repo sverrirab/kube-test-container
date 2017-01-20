@@ -54,9 +54,9 @@ ab -n 1000 -c 10 http://IPADDRESS/status
 
 There are three different versions of this component that only differ in reporting a different version:
 
-* kube-test-container:v1.0
-* kube-test-container:v1.1
-* kube-test-container:v1.2
+* sverrirab/kube-test-container:v1.0
+* sverrirab/kube-test-container:v1.1
+* sverrirab/kube-test-container:v1.2
 
 ```
 kubectl set image deployment/kube-test-container kube-test-container=sverrirab/kube-test-container:v1.1
@@ -68,9 +68,14 @@ kubectl set image deployment/kube-test-container kube-test-container=sverrirab/k
 kubectl delete deploy,svc kube-test-container
 ```
 
-## Screenshot
+# Screenshot
 
 ![Screen Shot](./docs/screenshot.png "Kube-Test-Container in action")
+
+# Building and testing
+
+If you want to make modifications you can use the `./build.sh` script to build a local docker container
+and `./run.sh` to test it locally through `http://localhost:8000/`.
 
 # License
 
