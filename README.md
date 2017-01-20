@@ -8,6 +8,9 @@ Simply create a deployment and service with the yaml file:
 kubectl create -f ./kubernetes/kube-test-container.yaml
 ```
 
+The containers have already been uploaded so you don't need to build anything here.  But the full 
+source is provided here if you want to extend this (Pull Request welcome).
+
 ## Scale the deployment
 
 ```
@@ -15,8 +18,8 @@ kubectl scale deployment kube-test-container --replicas=30
 ```
 
 ## Automatic scaling
-Turn on automatic scaling with [HPA](https://kubernetes.io/docs/user-guide/horizontal-pod-autoscaling/)
 
+Turn on automatic scaling with [HPA](https://kubernetes.io/docs/user-guide/horizontal-pod-autoscaling/)
 
 ```
 kubectl autoscale deployment kube-test-container --min=10 --max=20
@@ -37,6 +40,27 @@ If you click the "Let one use too much RAM" `http://IPADDRESS/ram` or "Let one u
 to trigger one of the container to use too much RAM / CPU (this will grow unbound).  
 
 Click "Fetch multiple status pages" for requesting status `http://IPADDRESS/status`
+
+## External load testing
+
+You can use your favorite benchmarking tool.  The simplest for many would be Apache Benchmark:
+
+
+```
+ab -n 1000 -c 10 http://IPADDRESS/status
+```
+
+## Testing upgrades
+
+There are three different versions of this component that only differ in reporting a different version:
+
+* v1.0
+* v1.1
+* v1.1
+
+```
+kubectl set image deployment/kube-test-container kube-test-container=sverrirab/kube-test-container:v1.1
+```
 
 ## Cleanup
 

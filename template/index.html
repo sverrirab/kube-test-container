@@ -8,7 +8,6 @@
 			document.getElementById('status').innerHTML = txt;
 		}
 		function complete(e) {
-		    console.log(e);
 		    var src = e.srcElement;
 		    var el = e.srcElement.dataElement;
 		    var setStyle = e.srcElement.dataSetStyle;
@@ -90,18 +89,30 @@
             <span class="col-sm-3 result">...</span>
         </div>
     </div>
+
     <h2>Actions</h2>
     <a href="#" onclick="useRam()">Let one use too much RAM</a><p>
     <a href="#" onclick="useCpu()">Let one use too much CPU</a><p>
     <a href="#" onclick="reloadAll()">Fetch multiple status pages</a><p>
     <div class="alert alert-success">
-        <span id="status"></span>
+        <div class="row">
+            <span id="status" class="col-sm-3">...</span>
+        </div>
     </div>
+
     <h2>Environment Variables</h2>
     <ul class="list-group">
         {{range .Env}}
             <li class="list-group-item">{{.}}</li>
         {{end}}
     </ul>
+
+    <h2>This instance status</h2>
+    <div class="alert alert-success">
+        <div class="row">
+            <span class="col-sm-3">{{.Status}}</span>
+        </div>
+    </div>
+
 </body>
 </html>
