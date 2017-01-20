@@ -54,9 +54,9 @@ ab -n 1000 -c 10 http://IPADDRESS/status
 
 There are three different versions of this component that only differ in reporting a different version:
 
-* v1.0
-* v1.1
-* v1.1
+* kube-test-container:v1.0
+* kube-test-container:v1.1
+* kube-test-container:v1.2
 
 ```
 kubectl set image deployment/kube-test-container kube-test-container=sverrirab/kube-test-container:v1.1
