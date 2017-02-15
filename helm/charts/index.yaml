@@ -1,0 +1,31 @@
+apiVersion: v1
+entries:
+  kube-test-container:
+  - apiVersion: v1
+    created: 2017-02-15T18:27:00.285941328Z
+    description: Test chart for Kubernetes / Helm for kube-test-container
+    digest: 5ebc11ccff3ce62a26b35b0a3b631aa23aa1070b3f113c0a6946ef8e8fd30fd4
+    home: https://github.com/sverrirab/kube-test-container
+    name: kube-test-container
+    urls:
+    - https://raw.githubusercontent.com/sverrirab/kube-test-container/master/helm/charts/kube-test-container-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v1
+    created: 2017-02-15T18:27:00.28575644Z
+    description: Test chart for Kubernetes / Helm for kube-test-container
+    digest: 5e9eb2f50a6e03b45714baebd148ef475a0b9d8d7afd76e0f7df67487172bc24
+    home: https://github.com/sverrirab/kube-test-container
+    name: kube-test-container
+    urls:
+    - https://raw.githubusercontent.com/sverrirab/kube-test-container/master/helm/charts/kube-test-container-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v1
+    created: 2017-02-15T18:27:00.285556865Z
+    description: Test chart for Kubernetes / Helm for kube-test-container
+    digest: 8bca695b9bf804e08980ebbe40d58b5b94c2ee6bbbf8506a1e5cc3f93c13dad3
+    home: https://github.com/sverrirab/kube-test-container
+    name: kube-test-container
+    urls:
+    - https://raw.githubusercontent.com/sverrirab/kube-test-container/master/helm/charts/kube-test-container-1.0.0.tgz
+    version: 1.0.0
+generated: 2017-02-15T18:27:00.285208807Z
