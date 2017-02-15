@@ -4,7 +4,7 @@ This is a very simple 7.5MB container that you can use to test your [Kubernetes]
 
 Simply create a deployment and service with the yaml file:
 
-```
+```bash
 kubectl create -f ./kubernetes/kube-test-container.yaml
 ```
 
@@ -13,7 +13,7 @@ source is provided here if you want to extend this (Pull Request welcome).
 
 ## Scale the deployment
 
-```
+```bash
 kubectl scale deployment kube-test-container --replicas=30
 ```
 
@@ -21,13 +21,13 @@ kubectl scale deployment kube-test-container --replicas=30
 
 Turn on automatic scaling with [HPA](https://kubernetes.io/docs/user-guide/horizontal-pod-autoscaling/)
 
-```
+```bash
 kubectl autoscale deployment kube-test-container --min=10 --max=20
 ```
 
 ## View the status
 
-```
+```bash
 kubectl get deploy,svc kube-test-container
 ```
 
@@ -46,7 +46,7 @@ Click "Fetch multiple status pages" for requesting status `http://IPADDRESS/stat
 You can use your favorite benchmarking tool.  The simplest for many would be Apache Benchmark:
 
 
-```
+```bash
 ab -n 1000 -c 10 http://IPADDRESS/status
 ```
 
@@ -58,14 +58,32 @@ There are three different versions of this component that only differ in reporti
 * sverrirab/kube-test-container:v1.1
 * sverrirab/kube-test-container:v1.2
 
-```
+```bash
 kubectl set image deployment/kube-test-container kube-test-container=sverrirab/kube-test-container:v1.1
 ```
 
 ## Cleanup
 
-```
+```bash
 kubectl delete deploy,svc kube-test-container
+```
+
+# Helm installation
+
+For testing your cluster with [Helm](https://github.com/kubernetes/helm):
+
+```bash
+helm repo add kube-test-container https://raw.githubusercontent.com/sverrirab/kube-test-container/master/helm/charts/
+```
+
+To see available versions:
+```bash
+helm search --versions kube-test-container
+```
+
+And to install:
+```bash
+helm install --version 1.1.0 --name ktc kube-test-container/kube-test-container
 ```
 
 # Screenshot
