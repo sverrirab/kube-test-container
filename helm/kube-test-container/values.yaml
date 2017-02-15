@@ -1,0 +1,20 @@
+# Default values for kube-test-container.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 10
+image:
+  repository: sverrirab/kube-test-container
+  tag: v1.0
+  pullPolicy: IfNotPresent
+service:
+  name: kube-test-container
+  type: LoadBalancer
+  externalPort: 80
+  internalPort: 8000
+resources:
+  limits:
+    cpu: 100m
+    memory: 50Mi
+  requests:
+    cpu: 10m
+    memory: 5Mi
