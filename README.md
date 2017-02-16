@@ -1,6 +1,6 @@
 # Kubernetes Test Container
 
-This is a very simple 7.5MB container that you can use to test your [Kubernetes](https://kubernetes.io) cluster.
+This is a very simple [![](https://images.microbadger.com/badges/image/sverrirab/kube-test-container:v1.0.svg)](https://microbadger.com/images/sverrirab/kube-test-container:v1.0 "Get your own image badge on microbadger.com") container that you can use to test your [Kubernetes](https://kubernetes.io) cluster.
 
 Simply create a deployment and service with the yaml file:
 
