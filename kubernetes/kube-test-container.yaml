@@ -5,7 +5,7 @@ metadata:
     app: kube-test-container
   name: kube-test-container
 spec:
-  replicas: 20
+  replicas: 12
   selector:
     matchLabels:
       app: kube-test-container
@@ -17,7 +17,7 @@ spec:
       containers:
       - name: kube-test-container
         image: sverrirab/kube-test-container:v1.0
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             cpu: 200m
