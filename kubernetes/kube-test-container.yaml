@@ -5,7 +5,7 @@ metadata:
     app: kube-test-container
   name: kube-test-container
 spec:
-  replicas: 12
+  replicas: 5
   selector:
     matchLabels:
       app: kube-test-container
@@ -20,11 +20,11 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            cpu: 200m
-            memory: 50Mi
+            cpu: 50m
+            memory: 5Mi
           requests:
             cpu: 10m
-            memory: 10Mi
+            memory: 1Mi
         ports:
         - containerPort: 8000
 ---
